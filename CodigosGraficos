@@ -1,0 +1,126 @@
+import pandas as pd
+import numpy as np
+df = pd.read_csv("dataTrabajo.csv")
+df
+
+df.info()
+
+print('--------data frame------')
+df=pd.DataFrame(pd.read_csv('dataTrabajo.csv'))
+print(df)
+
+import matplotlib.pyplot as plt
+
+# Ejemplo de diagrama de barras simple usando Matplotlib
+semestre = ["semestre2", "semestre3", "semestre4", "semestre5", "semestre6"]
+edad = [17, 18, 19, 20, 21, 22, 23, 24]
+
+plt.bar("semestre", "edad")
+plt.xlabel("semestre")
+plt.ylabel("edad")
+plt.title("Diagrama de barras")
+plt.show()
+
+print('----------calcular estado---------')
+print("Moda" , df['Open'].mode)
+
+import matplotlib.pyplot as plt
+#Datos para dibujar
+x=[1, 2, 3, 4, 5]
+y=[1, 4, 9, 16, 25]
+
+#Crear dibujo de lineas
+plt.plot(x,y)
+
+#Titulo y etiquetas de los ejes
+plt.title("Ejmplo simple")
+plt.xlabel("Eje X")
+plt.ylabel("Eje Y")
+
+plt.show()
+
+import matplotlib.pyplot as plt
+etiquetas=['Python', 'Java', 'C++', 'JavaScript']
+limites=[215, 139, 245, 218]
+colores=['gold', 'yellowgreen', 'lightcoral', 'lightskyblue']
+destacar=(0.1,0,0,0) #Segmento uno
+
+plt.pie(limites,
+        explode=destacar,
+        labels=etiquetas,
+        colors=colores,
+        autopct='%1.1f%%',
+        shadow=True,
+        startangle=148)
+
+import matplotlib.pyplot as plt
+etiquetas=['Python', 'Java', 'C++', 'JavaScript']
+limites=[215, 130, 245, 210]
+colores=['gold', 'yellowgreen', 'lightcoral', 'lightskyblue']
+destacar=(0.1,0,0,0) #Segmento uno
+
+plt.pie(limites,
+        explode=destacar,
+        labels=etiquetas,
+        colors=colores,
+        autopct='%1.1f%%',
+        shadow=True,
+        startangle=148)
+
+centro=plt.Circle((0,0), 0.70, fc='white')
+fig=plt.gcf()
+fig.gca().add_artist(centro)
+
+plt.axis('equal')
+plt.show()
+
+import matplotlib.pyplot as plt
+
+categorias=['Categoria A', 'Categoria B', 'Categoria C', 'Categoria D']
+valores=[23,45,56,78]
+plt.bar(categorias,
+        valores,
+        color='skyblue')
+plt.title('Grafico de barras')
+plt.xlabel('Cat.')
+plt.ylabel('Val.')
+
+plt.show()
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("amazon.csv")
+df
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+from matplotlib.dates import YearLocator, DateFormatter
+from google.colab import files
+import seaborn as sns
+
+#uploaded = files.upload()
+
+df = pd.DataFrame(pd.read_csv("zomato.csv"))
+
+df.describe().round()
+
+df.round()
+
+def _plot_series(series, series_name, series_index=0):
+  palette = list(sns.palettes.mpl_palette('Dark2'))
+  xs = series['Date']
+  ys = series['Close']
+
+  plt.plot(xs, ys, label=series_name, color=palette[series_index % len(palette)])
+
+fig, ax = plt.subplots(figsize=(10, 5.2), layout='constrained')
+df_sorted = df.sort_values('Date', ascending=True)
+_plot_series(df_sorted, '')
+sns.despine(fig=fig, ax=ax)
+plt.xlabel('Date')
+_ = plt.ylabel('Close')
